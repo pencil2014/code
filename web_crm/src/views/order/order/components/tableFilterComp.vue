@@ -1,0 +1,97 @@
+<template>
+	<div class="table-filter">
+		<div class="table-filter-left">
+			<el-button v-for="(item, i) in BtnList" :key="i" :type="item.type == 'Add' ? 'primary' : 'default'" size="mini" @click="handleColumns(item.type)">
+				{{ item.label }}
+			</el-button>
+		</div>
+
+		<div class="table-filter-right">
+			<div class="pulish-status">
+				<el-radio-group v-model="tableQuery.state" size="mini" @change="handleSearchStatus">
+					<el-radio-button size="mini" v-for="(item, index) in status" :key="index" :label="item.value">{{ item.label }} </el-radio-button>
+				</el-radio-group>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+import store from '@/store'
+import { mapState } from 'vuex'
+export default {
+	data() {
+		return {}
+	},
+	props: {
+		config: {
+      type: Object,
+      default: () => ({})
+    },
+    status: { 
+      type:Array, 
+      default:() => {[]}
+    },
+    // 接口传参
+    tableQuery: {
+      type: Object,
+      default: () => ({})
+    },
+    BtnList: {
+      type:Array, 
+      default:() => {[]}
+    },
+    callback: {
+      type: Function,
+      default: () => ({})
+    }
+	},
+	created() {},
+	mounted() {},
+	computed: {
+		...mapState({
+			currRole: state => state.order.currRole,
+			roles: state => state.user.roles,
+			dictMap: state => state.dict.dictMap
+		}),
+		isBkg() {
+			return this.roles.includes('bkg')
+		}
+	},
+	components: {},
+	methods: {
+		handleColumns(type) {
+			if(type === 'Export'){
+				this.$confirm('是否确认导出？', '提示', {
+					confirmButtonText: '确定',
+					cancelButtonText: '取消',
+					type: 'warning'
+				}).then(() => {
+					this.callback('Export')
+				})
+			}else{
+				this.callback(type)
+			}
+			
+		},
+
+		// 生成结算单
+		handleGenerateStatement() {
+			console.log('生成结算单')
+		},
+
+		// 通知放舱
+		handleNotifyRelease() {
+			console.log('通知放舱')
+		},
+
+		// 按发布状态查询
+		handleSearchStatus(value) {
+			Object.assign(this.tableQuery, {
+				state: value
+			})
+			this.callback('SearchStatus')
+		}
+	}
+}
+</script>
+<style scoped></style>

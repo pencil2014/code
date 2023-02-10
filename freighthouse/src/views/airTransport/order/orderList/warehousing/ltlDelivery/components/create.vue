@@ -1,0 +1,341 @@
+<template>
+	<BaseDialog :config="dialogConfig" :callback="dialogCallback">
+		<el-form ref="createSoForm" :rules="rules" :model="createItem" label-position="right" label-width="100px" class="createSo-form">
+			<div class="soInfo-tit">
+				<div class="tit">委派信息</div>
+			</div>
+			<el-row class="mt10">
+				<el-col :span="6">
+					<el-form-item label="装货人" prop="loadContact"  :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.loadContact" clearable></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="6">
+					<el-form-item label="装货人电话" prop="loadContactPhone"  :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.loadContactPhone" clearable></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="12">
+					<el-form-item label="装货地点(到州)" prop="loadPlace" :show-message="false">
+						<el-cascader filterable style="width:100%" size="mini" :emitPath="true" v-model="createItem.loadPlace" :options="loadPlaceData" :props="cityProps" clearable></el-cascader>
+					</el-form-item>
+				</el-col>
+				<el-col :span="24">
+					<el-form-item label="装货详细地址" prop="loadAddress" :show-message="false">
+						<div class="box-address-flex">
+							<el-input size="mini" placeholder="请输入" v-model="createItem.loadAddress" clearable maxlength="512" show-word-limit></el-input>
+							<el-button type="default" size="mini" class="box-address-btn" @click="showAddressPop('on')">选择</el-button>
+						</div>
+					</el-form-item>
+				</el-col>
+				<el-col :span="12">
+					<el-form-item label="卸货地点(到州)" prop="unloadPlace" :show-message="false">
+						<el-cascader filterable style="width:100%" size="mini" :emitPath="true" v-model="createItem.unloadPlace" :options="loadPlaceData" :props="cityProps" clearable></el-cascader>
+					</el-form-item>
+				</el-col>
+				<el-col :span="24">
+					<el-form-item label="卸货详细地址" prop="unloadAddress" required :show-message="false">
+						<div class="box-address-flex">
+							<el-input size="mini" placeholder="请输入" v-model="createItem.unloadAddress" clearable maxlength="512" show-word-limit></el-input>
+							<el-button type="default" size="mini" class="box-address-btn" @click="showAddressPop('un')">选择</el-button>
+						</div>
+					</el-form-item>
+				</el-col>
+				<el-col :span="6">
+					<el-form-item label="收货人" required prop="consignee" :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.consignee" clearable></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="6">
+					<el-form-item label="收货人电话" required prop="consigneePhone" :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.consigneePhone" clearable></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="6">
+					<el-form-item label="收货人邮箱" prop="consigneeEmail" required :show-message="false">
+						<el-input maxlength="128" size="mini" placeholder="请输入" v-model="createItem.consigneeEmail" clearable></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="6">
+					<el-form-item label="邮政编码" prop="postCode" :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.postCode" clearable></el-input>
+					</el-form-item>
+				</el-col>
+
+				<el-col :span="24">
+					<el-form-item label="备注" prop="remark" :show-message="false">
+						<el-input size="mini" placeholder="请输入" v-model="createItem.remark" clearable maxlength="512" show-word-limit></el-input>
+					</el-form-item>
+				</el-col>
+				<el-col :span="24">
+					<el-form-item label="快捷输入">
+						<div class="quick-flex-class">
+							<el-input class="quick-input" size="mini" placeholder="请依次输入姓名、电话、详细地址、中文逗号隔开" v-model="quickInputModel" clearable></el-input>
+							<el-button size="mini" type="primary" class="ml10" @click="handleQuickInput('load')">填充到装货人</el-button>
+							<el-button size="mini" type="primary" class="ml10" @click="handleQuickInput('unload')">填充到收货人</el-button>
+						</div>
+					</el-form-item>
+				</el-col>
+			</el-row>
+		</el-form>
+		<div v-if="addressPopShow">
+			<AddressPop @close="addressPopClose"></AddressPop>
+		</div>
+	</BaseDialog>
+</template>
+
+<script>
+import { mapState } from 'vuex'
+import BaseDialog from '@/components/Base/Dialog/index'
+import { fclTruckIntrustRegion } from '@/api/base'
+import { randomString } from '@/utils'
+import AddressPop from '@/views/order/order/orderList/components/boxAddressPop'
+
+const defaultCreate = {
+	loadContact: '',
+	loadContactPhone: '',
+	loadPlace: [],
+	loadAddress: '',
+	consignee: '',
+	consigneePhone: '',
+	consigneeEmail: '',
+	postCode: '',
+	unloadPlace: [],
+	unloadAddress: '',
+	remark: ''
+}
+
+export default {
+	data() {
+		return {
+			supplierOptions: [],
+			currencyList: [],
+			oQuery: this.$route.query,
+			dialogConfig: {
+				title: '新增委派信息',
+				show: true,
+				size: 'medium',
+				width: '1120px'
+			},
+			createItem: Object.assign({}, defaultCreate),
+			rules: {},
+			defaultContainerItem: { containerType: '', num: '' },
+			cityProps: {
+				value: 'cname',
+				label: 'cname',
+				children: 'children'
+			},
+			podPortList: [],
+			loadPlace: [],
+			loadPlaceData: [],
+			quickInputModel: '',
+			addressPopShow: false,
+			loadType: ''
+		}
+	},
+	props: {},
+	created() {
+		//获取省市区级联框数据
+		this.getLoadPlaceData()
+	},
+	mounted() {},
+	computed: {
+		...mapState({
+			dictMap: state => state.dict.dictMap
+		})
+	},
+	watch: {},
+	components: {
+		BaseDialog,
+		AddressPop
+	},
+	methods: {
+		showAddressPop(val) {
+			this.loadType = val
+			this.addressPopShow = true
+		},
+		addressPopClose(action, value) {
+			this.addressPopShow = false
+			if (action === 'Confirm') {
+				if (this.loadType === 'on') {
+					this.createItem.loadContact = value.contactName
+					this.createItem.loadContactPhone = value.contactPhone
+					this.createItem.loadAddress = value.addressDetail
+					this.showCasPlace = false
+					if (!value.isChina) {
+						this.createItem.loadPlace = value.addressProvince ? [value.addressCountry, value.addressProvince] : [value.addressCountry]
+					} else {
+						this.createItem.loadPlace = [value.addressCountry, value.addressProvince, value.addressCity, value.addressArea]
+					}
+					this.$nextTick(() => {
+						this.showCasPlace = true
+					})
+				}
+				if (this.loadType === 'un') {
+					this.createItem.consignee = value.contactName
+					this.createItem.consigneePhone = value.contactPhone
+					this.createItem.unloadAddress = value.addressDetail
+					this.createItem.postCode = value.postCode
+					this.showCasPlace = false
+					if (!value.isChina) {
+						this.createItem.unloadPlace = value.addressProvince ? [value.addressCountry, value.addressProvince] : [value.addressCountry]
+					} else {
+						this.createItem.unloadPlace = [value.addressCountry, value.addressProvince, value.addressCity, value.addressArea]
+					}
+					this.$nextTick(() => {
+						this.showCasPlace = true
+					})
+				}
+			}
+		},
+		//获取省市区数据
+		async getLoadPlaceData() {
+			let res = await fclTruckIntrustRegion({})
+			//处理最后一级children空数组
+			this.loadPlaceData = this.handleChildren(res.data)
+		},
+		//处理最后一级children为空数组问题
+		handleChildren(data) {
+			// 循环遍历json数据
+			for (var i = 0; i < data.length; i++) {
+				if (data[i].children.length < 1) {
+					// children若为空数组，则将children设为undefined
+					data[i].children = undefined
+				} else {
+					// children若不为空数组，则继续 递归调用 本方法
+					this.handleChildren(data[i].children)
+				}
+			}
+			return data
+		},
+		close(action, value) {
+			this.$emit('close', action, value)
+		},
+		getParmasData() {
+			return Object.assign({}, this.createItem)
+		},
+		dialogCallback(action, done) {
+			if (action === 'Confirm') {
+				this.$refs.createSoForm.validate(valid => {
+					if (valid) {
+						let createTime = new Date().getTime()
+						// 添加createTime参数，做单元格合并判断用
+						let data = this.getParmasData()
+						this.close('Confirm', {
+							...data,
+							createTimeStr: createTime,
+							mergeId: createTime + '' + randomString()
+						})
+					} else {
+						console.log('error submit!!')
+						return false
+					}
+				})
+			} else {
+				this.close('Cancel')
+			}
+		},
+		handleQuickInput(type) {
+			if (this.quickInputModel) {
+				let arr = this.quickInputModel.split('，')
+				if (type === 'load') {
+					this.createItem.loadContact = arr[0] || ''
+					this.createItem.loadContactPhone = arr[1] || ''
+					this.createItem.loadAddress = arr[2] || ''
+				} else {
+					this.createItem.consignee = arr[0] || ''
+					this.createItem.consigneePhone = arr[1] || ''
+					this.createItem.unloadAddress = arr[2] || ''
+				}
+			}
+		}
+	}
+}
+</script>
+
+<style lang="scss">
+.createSo-form {
+	padding: 0;
+	.pre-box-time {
+		.el-form-item__content {
+			margin-left: 10px !important;
+		}
+	}
+}
+.createSo-form .soInfo-tit {
+	font-size: 12px;
+	line-height: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+.createSo-form .so-container-list {
+	display: flex;
+	margin: 8px 0;
+}
+.createSo-form .so-container-list .so-list {
+	width: 100%;
+	display: flex;
+	padding: 4px 0 0;
+}
+.so-list {
+	border-radius: 2px;
+	border: 1px solid #e9e9e9;
+}
+.createSo-form .soInfo-tit .tit {
+	font-size: 12px;
+	line-height: 20px;
+	font-weight: bold;
+}
+.createSo-form .soInfo-tit .el-button--mini {
+	line-height: 20px;
+}
+.createSo-form .el-form-item {
+	margin-bottom: 4px;
+}
+.createSo-form .containerType-list {
+	// display: inline-block;
+	/* margin-left: 8px; */
+	margin-bottom: 4px;
+}
+.createSo-form .range {
+	display: inline-block;
+	width: 20px;
+	text-align: center;
+}
+
+.createSo-form .el-icon-circle-plus-outline,
+.createSo-form .el-icon-remove-outline {
+	font-size: 15px;
+	margin-left: 5px;
+}
+.createSo-form .el-form-item__label {
+	padding-right: 5px;
+	line-height: 20px;
+	/* height: 20px; */
+}
+.createSo-form .el-form-item__content {
+	line-height: 20px;
+	/* height: 20px; */
+}
+.box-address-flex {
+	display: flex;
+	display: flex;
+	.box-address-input {
+		flex: 1;
+	}
+	.box-address-btn {
+		margin-left: 5px;
+		width: 50px;
+	}
+}
+.quick-flex-class {
+	display: flex;
+	.quick-input {
+		flex: 1;
+	}
+	.quick-btn {
+		margin-left: 5px;
+		width: 50px;
+	}
+}
+</style>

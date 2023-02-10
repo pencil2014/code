@@ -1,0 +1,82 @@
+module.exports = (params) => {
+  return {
+    "code": 0,
+    "data": {
+      "allColumns": [],
+      "configColumns": [],
+      "currPage": 1,
+      "list": [
+        {
+          "acctVoucherNo": "凭证号1",
+          "auditName": "",
+          "auditStatus": "0",
+          "auditTime": null,
+          "createdName": "12",
+          "createdTime": null,
+          "recheckName": "22",
+          "recheckTime": null,
+          "refuseReason": "",
+          "settleCompName": "美国分公司",
+          "settleCorpName": "深圳分公司",
+          "settleOrderBaddebtId": 1,
+          "settleOrderNo": "Settle2020101022005",
+          "writeoffSumRemark": "1",
+          "writeoffNopayNo": "1",
+          "writeoffReverseNo": "2",
+          "writeoffTime": "2",
+          "recheckStatus": "no_check",
+          "writeoffName": 'name',
+          "writeoffType": "gedging_writeoff"
+        },
+        {
+          "acctVoucherNo": "凭证号1",
+          "auditName": "",
+          "auditStatus": "1",
+          "auditTime": null,
+          "createdName": "12",
+          "createdTime": null,
+          "recheckName": "22",
+          "recheckTime": null,
+          "refuseReason": "",
+          "settleCompName": "美国分公司",
+          "settleCorpName": "深圳分公司",
+          "settleOrderBaddebtId": 1,
+          "settleOrderNo": "Settle2020101022005",
+          "writeoffSumRemark": "2",
+          "writeoffNopayNo": "1",
+          "writeoffReverseNo": "1",
+          "writeoffTime": "2",
+          "recheckStatus": "checked",
+          "writeoffName": 'name',
+          "writeoffType": "money_pay_writeoff"
+        },
+        {
+          "acctVoucherNo": "凭证号1",
+          "auditName": "",
+          "auditStatus": "1",
+          "auditTime": null,
+          "createdName": "12",
+          "createdTime": null,
+          "recheckName": "22",
+          "recheckTime": null,
+          "refuseReason": "",
+          "settleCompName": "美国分公司",
+          "settleCorpName": "深圳分公司",
+          "settleOrderBaddebtId": 1,
+          "settleOrderNo": "Settle2020101022005",
+          "writeoffSumRemark": "2",
+          "writeoffNopayNo": "1",
+          "writeoffReverseNo": "1",
+          "writeoffTime": "2",
+          "recheckStatus": "check_back",
+          "writeoffName": 'name',
+          "writeoffType": "money_pay_writeoff"
+        }
+      ],
+      "pageSize": 10,
+      "totalCount": 1,
+      "totalPage": 1
+    },
+    "msg": "success"
+  }
+}

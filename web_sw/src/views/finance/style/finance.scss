@@ -1,0 +1,905 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fin-el-tabs {
+  background: #FFFFFF;
+  border-radius: 2px;// border-radius: 4px 4px 0px 0px;
+}
+
+.fin-el-tabs .finance-search-form {
+  margin-top: 4px;
+}
+.fin-el-tabs .el-tabs__header {
+  margin: 0;
+}
+.fin-el-tabs .el-tabs__nav-scroll{
+  padding-left: 14px;
+}
+.finance-order-fee-cont .fin-el-tabs .el-tab-pane{
+  min-height: calc(100vh - 152px); // min-height: calc(100vh - 152px)
+  overflow: auto;
+}
+.finance-order-fee-cont.order-fee-cont-resize .fin-el-tabs .el-tab-pane{
+  min-height: calc(100vh - 152px - 122px + 29px);
+  overflow: auto;
+}
+.fin-el-tabs .el-tabs__item{
+  font-size: 14px;
+  color: #BFBFBF;
+  line-height: 20px;
+  padding: 4px 18px; // 5px 18px 5px
+  height: 28px; // 30px
+}
+.fin-el-tabs .el-tabs__item.is-active{
+  color: #222;
+  font-weight: 600;
+}
+.one-kind-fee {
+  padding-top: 1px;
+}
+.one-kind-fee .el-loading-mask {
+  top: 1px;
+}
+
+.finance-container{
+  position: relative;
+}
+.finance-container .el-button, .one-kind-fee .el-button { // .finance-container .el-button--mini, .one-kind-fee .el-button--mini
+  padding: 3px 7px;
+}
+.finance-btn-container > .el-button + .el-button, .money-box-right > .el-button + .el-button, .money-box-left > .el-button + .el-button {
+  margin-left: 8px;
+}
+.finance-container .el-table__fixed::before, .finance-container .el-table__fixed-right::before{
+  display: none;
+}
+.finance-container .el-button--text{
+  color: #3E80F5;
+}
+.finance-container .el-checkbox{
+  font-size: 12px;
+}
+
+.finance-table-container {
+  border-radius: 4px;
+  border: 1px solid #E9E9E9;
+  // 财务详情页card表格，统一设置margin
+  margin: 4px 14px 18px;
+}
+.finance-table-container + .finance-table-container {
+  margin-top: 22px !important;
+}
+.one-kind-fee .finance-table-container {
+  margin-top: 14px;
+}
+.finance-table .el-table{
+  color: #4a4a4a;
+}
+.finance-table .el-table--border {
+ border: none;
+}
+.finance-table .el-table--border:after {
+  width: 0;
+}
+.finance-table .el-table th {
+  background-color: #F8F9FD !important;
+  // border-bottom: 0 !important;
+}
+.finance-table .el-table__header th{
+  height: 28px;
+  padding: 3px 0 1px;
+  // border-bottom: 0 !important;
+}
+.finance-table .el-table__header th.el-table-column--selection {
+  border-right: 0;
+}
+.finance-table .el-table__header th:last-of-type {
+  border-right: 0 !important;
+}
+.finance-table .el-table td { 
+  height: 26px;
+  padding: 3px 0 3px;
+}
+.finance-table .el-table .cell{
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.el-table .cell{
+  overflow: initial;
+}
+.finance-table .el-table--border.boxType-table th{
+  border-right: 0!important;
+}
+.finance-table .el-input__inner, .finance-page .el-input__inner, .one-kind-fee .el-input__inner, .fin-order-fee-wrapper .el-input__inner {
+  font-size: 12px;
+  padding: 0px 3px; // 2px 3px
+  height: 20px;
+  line-height: 20px; // 14px;
+}
+.finance-table .finance-el-pagination .el-input__inner{
+  padding: 0px 3px; // 2px 3px
+  height: 20px;
+}
+#app .vxe-table--render-default.size--mini .vxe-footer--column:not(.col--ellipsis) {
+	padding: 6px 0;
+}
+// 日期组件，左边有icon， 需要padding
+.el-date-editor.el-input.el-input--prefix .el-input__inner{
+  padding-left: 30px;
+}
+.finance-page, .one-kind-fee {
+  .finance-table {
+    .el-input__suffix {
+      position: absolute;
+      height: 20px; // 100%;
+      right: -1px; // 1px
+      top: 0px;
+    }
+  }
+  .el-input__suffix {
+    position: absolute;
+    height: 20px; // 100%;
+    right: 1px;
+    top: 0px;
+  }
+
+  .el-input__icon {
+    width: 16px;
+    font-size: 12px !important;
+    line-height: 20px;
+  }
+  .el-input__icon:after {
+    content: '';
+    height: 20px;
+    width: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+.one-kind-fee {
+  .el-autocomplete {
+    width: 100%;
+  }
+  .el-input--suffix { // :hover
+    .el-input__inner {
+      padding-right: 10px;
+    }
+  }
+}
+
+.finance-table-summary{
+  margin: 0 14px;
+  min-height: 38px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #E9E9E9;
+  padding: 8px 0; // 10px 0 8px
+  flex-wrap: wrap;
+}
+.finance-summary-text{
+  color: #222222;
+  line-height: 20px;
+}
+.finance-summary-text .el-button--text {
+  line-height: 20px;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0;
+}
+.finance-table-summary .finance-btn-container{
+  .finance-btn {
+    margin-bottom: 0px;
+  }
+}
+.finance-table-summary .finance-btn-container .el-button-group .finance-btn:first-of-type{
+  margin-left: 8px;
+}
+.finance-btn{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.money-box{
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 8px;
+  border-radius: 4px 4px 0px 0px;
+  background: #F8F9FD;
+  min-height: 30px;
+}
+.money-box.bg-white{
+  background: white;
+}
+.money-box-border-bottom {
+  border-bottom: 1px solid #e9e9e9;
+}
+.money-box .el-button{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.money-box-left{
+  display: flex;
+}
+.money-box-left .finance-btn{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.money-box-left .el-button-group:not(:first-child) .finance-btn:first-child{
+  margin-left: 8px;
+}
+.money-title{
+  font-size: 14px;
+  font-weight: 600;
+  color: #222222;
+  line-height: 20px;
+  
+  margin-right: 16px;
+}
+.one-kind-fee .money-title {
+  font-size: 12px;
+}
+.money-total{
+  color: #222222;
+  line-height: 20px;
+  
+  margin-right: 20px;
+}
+.money-total span{
+  color: #E63923;
+  font-weight: 400;
+}
+.money-pay-color{
+  color: #33B18A !important;
+}
+.money-recei-color{
+  color: #E63923 !important;
+}
+.money-box-right-padding{
+  padding-top: 4px;
+}
+.money-box-right .finance-btn{
+  margin-bottom: 0;
+  margin-top: 0;
+}
+.money-box-right .el-button-group:not(:first-child) .finance-btn:first-child{
+  margin-left: 8px;
+}
+.money-box-right .collapse-btn{
+  margin-left: 18px;
+  color: #4A4A4A;
+}
+.money-box-right .collapse-btn i{
+  margin-left: 8px;
+}
+.money-box-right .right-filter-btns-effect {
+  color: #1890ff;
+  background-image: none;
+  background-color: #FFFFFF;
+  border-color: #1890ff;
+  z-index: 1;
+}
+
+.finance-main{
+  position: relative;
+}
+.finance-main-left{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  background: #FFFFFF;
+  box-shadow: 4px 0px 10px 0px #E9E9E9;
+}
+.finance-main-right{
+  margin-left: 120px;
+  background: #F8F9FD;
+}
+.finance-main-left p{
+  height: 40px;
+  color: #BFBFBF;
+  text-align: center;
+  width: 120px;
+  border-bottom: 1px solid #E9E9E9;
+  line-height: 40px;
+  cursor: pointer;
+}
+
+.all-order-operation-box{
+  height: 40px;
+  display: flex;
+  border-radius: 4px 4px 0px 0px;
+  border-bottom: 1px solid #E9E9E9;
+}
+.one-order-operation{
+  width: 120px;
+  height: 40px;
+  position: relative;
+}
+.all-order-operation-box .el-button{
+  text-align: center;
+  font-size: 14px;
+  color: #3E80F5;
+  line-height: 40px;
+  width: 100%;
+  padding: 0;
+  border: none;
+}
+.all-order-operation-box .one-order-operation.active{
+  background: #3E80F5;
+  box-shadow: 0px -1px 0px 0px #E9E9E9;
+}
+.one-order-operation.active .el-button{
+  color: #FFF;
+}
+.one-order-operation i{
+  position: absolute;
+  width: 1px;
+  height: 16px;
+  background: #3E80F5;
+  right: 0;
+  top: 12px;
+}
+
+.money-dialog{
+  padding: 8px 0 4px 4px;
+}
+.money-dialog:nth-child(2){
+  padding: 12px 0 4px 4px;
+}
+.money-dialog-comp{
+  font-size: 14px;
+  color: #222222;
+  line-height: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+.money-dialog-item{
+  display: inline-block;
+  width: 148px;
+  height: 20px;
+  color: #4a4a4a;
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+.money-dialog-item span{
+  color: #E63923;
+}
+// 未使用
+.finance-btn-group{
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 16px;
+}
+.finance-btn-group>.el-button:nth-of-type(1){
+border-radius: 4px 0px 0px 4px;
+}
+.finance-btn-group>.el-button:nth-of-type(2){
+border-radius: 0px 4px 4px 0px;
+}
+.finance-btn-group .el-button+.el-button{
+  margin-left: 0px;
+}
+.upload-template .el-button{
+  border-radius: 0px;
+  border-top: 1px solid #D9D9D9;
+  border-bottom: 1px solid #D9D9D9;
+  border-left: none;
+  border-right: none;
+  }
+.upload-template{
+  display: inline-block;
+  height: 32px;
+}
+
+
+.detail-info-customer{
+  margin-bottom: 6px;
+}
+.detail-info-item{
+  display: inline-block;
+  vertical-align: top;
+  font-size: 12px;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 20px;
+  width: 262px;
+  min-height: 20px;
+  margin-bottom: 6px;
+  margin-right: 14px;
+}
+
+.finance-page{
+  // margin: 14px;
+  // min-height: calc(100vh - 58px);
+  height: 100%;
+  background: #FFF;
+}
+.finance-search-form{
+  padding: 8px 8px 0px 8px;
+  background: #FFF;
+}
+.finance-search-plus {
+  cursor: pointer;
+  position: relative;
+  width: 17px;
+  height: 17px;
+  border-radius: 17px;
+  border: 1px solid #4a4a4a;
+  margin-top: 2px;
+  display: inline-block;
+  transition: transform .3s;
+}
+.finance-search-plus:hover{
+  background: #eeeeee;
+  transform: rotate(90deg);
+}
+.finance-search-plus::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 1px;
+  height: 7px;
+  background: #4a4a4a;
+  left: 7px;
+  top: 4px;
+}
+.finance-search-plus::after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 1px;
+  background: #4a4a4a;
+  left: 4px;
+  top: 7px;
+}
+.finance-approve-detail{
+  background: #FFF;
+}
+.finance-page .el-form-item__label, .one-kind-fee .el-form-item__label{
+  line-height: 20px !important;
+  font-size: 12px;
+  padding-right: 4px;
+}
+.finance-page .el-form-item__content, .one-kind-fee .el-form-item__content{
+  line-height: 20px !important;
+  font-size: 12px;
+}
+
+.finance-list-container{
+  background: #FFFFFF;
+  border-radius: 4px;
+  .finance-table {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  .money-box{
+    background: #FFFFFF;
+  }
+  .finance-table:not(:first-child) .finance-el-table{
+    padding-top: 0;
+  }
+}
+.finance-search-list-gap{
+  height: 8px;
+  background: #F6F7F9;// #F8F9FD;
+}
+// 表格或其他地方的一种上传文件的样式
+.finance-table-upload{
+  display: flex;
+  align-items: center;
+  
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #D9D9D9;
+  background: #FFFFFF;
+  margin: 0 auto;
+  position: relative;
+}
+.finance-table-upload .el-upload-list{
+  position: absolute;
+  background: #FFF;
+  
+  width: calc(100% - 2px);
+}
+.finance-table-upload .el-upload-list .el-upload-list__item{
+  margin-top: 0;
+}
+.finance-table-upload .el-upload-list__item .el-icon-close-tip{
+  display: none !important;
+}
+.finance-table-upload .el-upload-list__item .el-icon-close {
+  top: 3px;
+  right: 0px;
+  opacity: .75;
+  color: #606266;
+  font-size: 12px;
+}
+.finance-table-upload .el-upload-list__item:focus{
+  outline: none;
+}
+.finance-table-upload .el-button{
+  width: 100%;
+  text-align: left;
+}
+.finance-table-upload .el-button span{
+  color: #BFBFBF;
+}
+.finance-table-upload .el-upload-list__item{
+  width: 100%;
+}
+.finance-table-upload .el-upload-list__item-name{
+  margin-right: 10px;
+  font-size: 12px;
+}
+.el-upload-list__item-name [class^="el-icon"] {
+  color: #C0C4CC;
+  margin-right: 5px;
+}
+.el-table .finance-table-upload .noselect {
+  -webkit-user-select: none !important; /* Chrome/Safari/Opera */
+  -moz-user-select: none !important; /* Firefox */
+  -ms-user-select: none !important; /* Internet Explorer/Edge */
+  user-select: none !important; /* Non-prefixed version, currently */
+}
+
+.finance-audit-reject-dialog .el-textarea{
+  width: 380px;
+}
+.finance-page , .one-kind-fee {
+  .el-textarea {
+    font-size: 12px;
+  }
+}
+
+.finance-upload-file-dialog .el-dialog__body {
+  padding: 40px 80px 10px;
+}
+.finance-upload-file-dialog .el-dialog__body .el-form-item {
+  margin-bottom: 0;
+}
+.finance-upload-file-dialog .el-dialog__body .el-form-item .file-upload {
+  min-height: 146px;
+}
+// 调整搜索框垂直间距
+.el-form-item--mini.el-form-item {
+  margin-bottom: 10px;
+}
+.finance-email-dialog .el-form-item--mini.el-form-item {
+  margin-bottom: 20px;
+}
+.finance-email-dialog .finance-email-content textarea {
+  height: 168px !important;
+}
+
+.finance-page .el-radio-group .el-radio{
+  line-height: 28px !important;
+}
+
+.modifyfee-detail-info .el-form-item{
+  margin-right: 24px;
+  margin-bottom: 10px;
+}
+.modifyfee-detail-info .el-date-editor.el-input{
+  width: 162px;
+}
+.modifyfee-detail-info .el-select{
+  width: 162px;
+}
+.modifyfee-detail-info .el-date-editor--daterange.el-input__inner{
+  width: 220px;
+}
+.finance-wider-el-input .el-input{
+  width: 220px;
+}
+
+.finance-self-tooltip{
+  display: inline-block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.el-tooltip__popper{
+  max-width: 80%;
+}
+.finance-tooltip{
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.finance-detail-info h3{
+  margin-bottom: 10px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+.finance-approve-detail-main{
+  padding: 6px 24px 20px;
+}
+
+.finance-agent-receipay .el-input__inner{
+  width: 260px;
+}
+.finance-el-form-item-tootip{
+  display: inline-block;
+  width: 157px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.settlement-detail-form-own .el-form-item__label{
+  padding-right: 0;
+}
+// 订单服务项的费用
+.service-container .component-cont .edit-container{
+  box-shadow: none;
+}
+.finance-one-service-fee{
+  padding: 0 0 4px;
+  background: #FFF;
+}
+.finance-one-service-fee-separator{
+  // border-top: 1px solid #E9E9E9;
+  padding-top: 8px;
+}
+.finance-one-service-fee-title{
+  margin-top: 14px;
+  margin-left: 14px;
+}
+.finance-one-service-fee-title p{
+  height: 32px;
+  padding: 5px 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #222222;
+  line-height: 22px;
+}
+.finance-one-service-fee .money-title{
+  opacity: 0.8;
+}
+// 日期组件
+.finance-page .el-input__icon.el-range__icon.el-icon-date,
+.finance-page .el-input__icon.el-range__icon.el-icon-time{
+  float: right;
+  order: 1;
+  margin-left: 0;
+}
+.finance-page .el-date-editor .el-range-separator{
+  width: 8px;
+}
+.el-date-editor.el-range-editor.el-date-editor--daterange .el-range-input{
+  background: transparent;
+}
+// 银行账户，部分信息由联动带出，需禁用，设置样式权重必填高于禁用
+.is-error .is-disabled .el-input__inner{
+  border-color: #ff4949 !important;
+}
+.finance-approve-btns-left{
+  font-size: 14px !important;
+}
+
+.el-cascader-panel{
+  font-size: 12px !important;
+}
+
+.el-form-item-invoice-remark .el-form-item__content {
+  width: calc(100% - 70px);
+}
+.el-form-item-invoice-remark .el-form-item__content .el-input {
+  width: 100%;
+}
+.el-form-item-invoice-remark .el-form-item__content {
+  height: auto !important;
+}
+.app-wrapper .finance-page .el-form-item-invoice-remark textarea {
+  min-height: 20px !important;
+}
+.app-wrapper .finance-page .el-form-item-invoice-remark-20 textarea {
+  min-height: 20px !important;
+}
+
+.el-dropdown-menu__item {
+  line-height: 28px;
+  padding: 0 18px;
+  font-size: 12px;
+  min-width: 85px;
+  text-align: center;
+}
+
+
+// 详情页样式放在一起
+.settlement-detail-form {
+  margin: 0 14px 0;
+  padding: 10px 0 4px;
+}
+.settlement-detail-form .el-form-item {
+  width: 262px;
+  margin-bottom: 6px !important;
+  margin-right: 14px;
+}
+.settlement-detail-form .el-form-item.double-form-item {
+  width: calc(262px * 2 + 14px);
+  .el-form-item__content {
+    width: calc(100% - 100px);
+    .el-input {
+      width: 100%;
+    }
+  }
+}
+.settlement-detail-form .el-form-item-text {
+  font-size: 12px; 
+  padding-top: 3px;
+  line-height: 14px;
+}
+.settlement-detail-form h3{
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+.settlement-detail-form .el-date-editor.el-input {
+  width: 162px;
+}
+.settlement-detail-form .el-select {
+  width: 162px;
+}
+.settlement-detail-form .el-input {
+  width: 162px;
+}
+.settlement-detail-form .el-select{
+  width: 162px;
+}
+.settlement-detail-form .el-form-item-invoice-remark {
+  width: 100%;
+}
+.settlement-detail-form .el-form-item__content {
+  width: 162px;
+}
+.settlement-exchange-rates{
+  width: 262px;
+  display: inline-block;
+  margin-right: 14px;
+  vertical-align: top;
+}
+.settlement-exchange-rates .settlement-exchange-rates-title{
+  color: #606266;
+  line-height: 20px;
+}
+// 详情页 冒号右对齐
+.settlement-detail-form .el-form-item{
+  width: 262px;
+  margin-right: 14px;
+  .el-form-item__content{
+    height: 20px;
+  }
+}
+.el-form-item__error {
+  color: #CD4130;
+  z-index: 4200;
+  transform: scale(0.85);
+  transform-origin: left;
+}
+// 详情页，常规form-item 后面加button
+.form__item__button .el-form-item__content{
+  position: relative;
+  .el-button{
+    position: absolute;
+    padding: 3px 0 !important;
+    right: -30px;
+  }
+}
+// 对账单合并的输入框的宽度
+.finance-settlementbill-merge .el-form-item__content {
+  width: 290px;
+}
+
+.is-error-container-fin .el-input__inner {
+  border-color: #ff4949;
+}
+.is-error-container-fin:hover .el-input__inner {
+  border-color: #ff4949;
+}
+.red-color-container-fin {
+  color: #ff4949 !important;
+}
+
+.el-button--purple {
+  color: #FFFFFF;
+  background-color: #674DC9;
+  border-color: #674DC9;
+}
+.el-button--purple:hover,
+.el-button--purple:focus {
+    background: #8571D4;
+    border-color: #8571D4;
+    color: #FFFFFF;
+}
+
+.finance-autocomplete-suggestion {
+  margin-top: 8px !important;
+  position: relative;
+  min-width: 130px;
+  margin-left: -10px;
+  &::before{
+    position: absolute;
+    top: -8px;
+    width: 100%;
+    height: 8px;
+    content: '';
+    background: rgba(255, 255, 255, 0)
+  }
+  .el-autocomplete-suggestion__wrap {
+    min-height: 70px;
+  }
+}
+
+// 对话框内列表 样式
+.finance-page .max_height_dialog .el-dialog{
+  margin-top: 5vh !important;
+  .el-dialog__body{
+    padding: 8px 10px;
+    overflow: hidden;
+  }
+}
+
+// 下拉导出样式 统一设置，不再单独页面设置，如需特殊处理单页面添加样式
+
+.select-template-box {
+  float: left;
+}
+.select-template-box .el-dropdown {
+  margin-left: 10px;
+  margin-bottom: 0;
+  border-radius: 0;
+  font-size: 12px;
+  border: 1px solid #d9d9d9;
+  border-radius: 4px;
+}
+.select-template-box:hover .el-dropdown {
+  background: rgb(236, 245, 255);
+  color: rgb(64, 158, 255);
+}
+.select-template-box .el-dropdown-link {
+  cursor: pointer;
+  padding-left: 5px;
+  line-height: 18px;
+  display: inline-block;
+}
+.select-template-box .el-icon--right {
+  margin-left: 3px;
+}
+.select-template-box .el-dropdown-link:focus {
+  outline: none;
+}
+
+
+.detail-info-item-label{
+  display: inline-block;
+  line-height: 20px;
+  width: 100px;
+  text-align: right;
+}
+.detail-info-item-content{
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 100px);
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.el-dialog__wrapper .fin-edit-remark.el-dialog textarea {
+  height: 76px;
+}
+.fin-dialog-content {
+  width: 100%;
+  .el-select {
+    width: 100%;
+  }
+}

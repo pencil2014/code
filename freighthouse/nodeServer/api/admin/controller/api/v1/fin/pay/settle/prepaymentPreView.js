@@ -1,0 +1,65 @@
+module.exports = (params) => {
+    return {
+        "code":0,
+        "data":{
+            "useWriteoffAmt":2323,
+            "settleCurrencyAmtSummary":"CNY 23232",
+            "orgCurrencyAmtSummary":"USD 3232|CNY 2321",
+            "settleExRateSummarys":[
+                {
+                    "usableWriteoffAmt":1000,
+                    "currencyTransform":"USD-CNY",
+                    "settleCurrency":"CNY"
+                }
+            ],
+            "payApplySettle":{
+                "applyNo":"PAYSET434343243",
+                "payAppySettleId":12
+            },
+            "prepayUsables":[
+                {
+                    "payOrderNo":"",
+                    "realpayAmt":123,
+                    "balance":100,
+                    "currentUseAmt":23,
+                    "currency":"CNY"
+                }
+            ],
+            "transferFeeList":[
+                {
+                    "transferFeeId":12,
+                    "feeId":123,
+                    "payOrderNo":"PAY34343243",
+                    "amt":100,
+                    "currency":"CNY",
+                    "cutType":"",
+                    "hasAllotAmt":20,
+                    "allotAmt":80
+                }
+            ],
+            "writeoffItems":[
+                {
+                    "settleCorpCode":"",
+                    "settleCorpName":"",
+                    "settleOrderNo":"232121",
+                    "settleOrderFeeId":12,
+                    "feeId":12,
+                    "feeName":null,
+                    "feeEnName":null,
+                    "settleAmt":null,
+                    "originalCurrency":null,
+                    "exSettleAmt":null,
+                    "settleCurrency":null,
+                    "settleExRate":null,
+                    "writeoffCurrency":null,
+                    "writeoffFeeAmt":23,
+                    "serviceName":null,
+                    "feeUnit":null,
+                    "unitPrice":233,
+                    "unitCount":12
+                }
+            ]
+        },
+        "msg":"success"
+    }
+}

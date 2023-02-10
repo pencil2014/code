@@ -1,0 +1,15 @@
+{
+  "name": "nodeServer",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node-dev ./app"
+  },
+  "dependencies": {
+    "mockjs": "^1.0.1-beta3",
+    "zlib": "^1.0.5"
+  },
+  "devDependencies": {
+    "node-dev": "^5.2.0"
+  }
+}

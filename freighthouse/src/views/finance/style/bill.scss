@@ -1,0 +1,284 @@
+/* 账单详情，结算单对账单详情的样式 */
+.finance-bill-detail{
+  /* position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%; */
+  min-height: calc(100vh - 58px);
+  margin: 14px;
+  background: #FFF;
+  /* z-index: 2100; */
+  /* overflow: auto; */
+  padding-bottom: 45px;
+  overflow-x: auto;
+}
+.finance-bill-detail-selectshow{
+  padding-top: 8px;
+  width: 1120px;
+  margin: 0 auto;
+  position: relative;
+}
+.finance-bill-switch-lang{
+  position: absolute;
+  right: 0;
+  top: 84px;
+  height: 22px;
+  font-size: 12px;
+  // color: #BFBFBF;
+  line-height: 22px;
+  cursor: pointer;
+  z-index: 100;
+}
+.finance-bill-detail-main{
+  padding-top: 16px;
+  width: 994px; // width: 1120px;
+  margin: 0 auto;
+}
+.finance-bill-detail-fee .finance-el-table {
+  padding: 0 !important;
+}
+.finance-bill-detail-fee .finance-table .el-table th {
+  // border-bottom: 1px solid #dfe6ec !important; // 现默认加了border-bottom
+  border-right: 0;
+}
+.finance-bill-detail-ls{
+  /* margin-top: 28px; */
+  padding-bottom: 11px;
+  border-bottom: 1px solid #D8D8D8;
+  text-align: center;
+  position: relative;
+  min-height: 53px;
+}
+.finance-bill-detail-logo{
+  position: absolute;
+  left: 0;
+  top: 44%;
+  margin-top: -15px;
+  width: 151px;
+  height: 29px;
+}
+.finance-bill-detail-ls {
+  .finance-bill-detail-title {
+    position: relative;
+    padding-left: 154px;
+    padding-right: 148px;
+    h2 {
+      font-size: 20px; // 24px;
+      font-weight: normal;
+      color: #222222;
+      line-height: 24px; // 33px;
+      margin: 0;
+    }
+    .bill-title-arrow {
+      position: absolute;
+      right: 131px;
+      top: 6px;
+      color: #C0C4CC;
+      font-size: 14px;
+      width: 20px;
+      height: 20px;
+      padding: 3px;
+      cursor: pointer;
+    }
+    .bill-title-dropdown {
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      margin-left: -200px;
+      border: solid 1px #dfe4ed;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      padding: 6px 0;
+      z-index: 100;
+      .bill-title-dropdown-item {
+        line-height: 28px;
+        height: 28px;
+        padding: 0 10px;
+        font-size: 12px;
+        cursor: pointer;
+        width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        &.selected {
+          color: #1890ff;
+          background-color: #FFFFFF;
+          font-weight: bold;
+        }
+        &:hover {
+          background-color: #F5F7FA;
+        }
+      }
+    }
+  }
+}
+.finance-bill-detail-ls p{
+  height: 20px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #BFBFBF;
+  line-height: 22px;
+  margin: 0;
+}
+.finance-bill-detail-h1{
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+.finance-bill-detail-h1 h1{
+  font-size: 24px; // 28px;
+  font-weight: bold;
+  color: #222222;
+  line-height: 28px; // 40px;
+  text-align: center;
+}
+.finance-bill-detail-info .detail-info-part:last-of-type {
+  margin-bottom: 8px;
+}
+.finance-bill-detail-info .detail-info-item{
+  margin-bottom: 8px;
+}
+.finance-bill-detail-info .detail-info-item-label{
+  display: inline-block;
+  width: 105px;
+  text-align: right;
+}
+.finance-bill-detail-info .detail-info-item-content{
+  display: inline-block;
+  vertical-align: top;
+  width: calc(100% - 105px);
+  line-height: 14px;
+  margin-top: 3px;
+  word-wrap: break-word;
+}
+.finance-bill-detail-address{
+  margin-top: 12px;
+}
+.finance-bill-detail-address p{
+  font-size: 12px;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+.finance-bill-detail-attention p{
+  font-size: 12px;
+  font-weight: 400;
+  color: #4A4A4A;
+  line-height: 22px;
+}
+.finance-bill-detail-btns{
+  display: flex;
+  justify-content:flex-end;
+  /* margin-top: 20px; */
+  position: fixed;
+  right: 96px;
+  bottom: 26px;
+  /* z-index: 2101; */
+  z-index: 1000;
+  vertical-align: middle;
+}
+.finance-bill-detail-btns .select-template-box .el-dropdown{
+  margin-left: 0;
+  margin-bottom: 0;
+  border-radius: 3px;
+  font-size: 12px;
+  border: 1px solid #DCDFE6; // #a3d3ff;
+}
+.finance-bill-detail-btns .select-template-box {
+  margin-right: 10px; // 16px;
+  margin-left: 10px;
+}
+.finance-bill-detail-btns .select-template-box .el-dropdown {
+  color: #606266; // #1890ff;
+  background: #FFF; // #e8f4ff;
+}
+.finance-bill-detail-btns .select-template-box:hover .el-dropdown {
+  background: #e8f4ff; // #1890ff;
+  color: #1890ff; //#FFF;
+  border: 1px solid #a3d3ff; // #1890ff;
+}
+.finance-bill-detail-btns .select-template-box .el-dropdown-link {
+  cursor: pointer;
+  padding: 0 7px;
+  line-height: 18px;
+}
+.finance-bill-detail-btns .select-template-box .el-dropdown-link:focus{
+  outline: none;
+}
+.finance-bill-detail-btns .el-button{
+  padding: 7px 24px;
+}
+.finance-bill-detail-btns .el-button + .el-button{
+  margin-left: 10px;
+}
+// .finance-bill-bankaccountlist-cont {
+//   width: 50%;
+// }
+.finance-bill-bankaccountlist{
+  padding-left: 0;
+  margin-top: 20px;
+}
+.finance-bill-bankaccountlist-item{
+  list-style: none;
+  margin-bottom: 15px;
+}
+.finance-bill-bankaccountlist .el-form-item--mini.el-form-item {
+  margin-bottom: 0;
+}
+.finance-bill-bankaccountlist .el-form-item__label, .finance-bill-bankaccountlist .el-form-item__content {
+  font-size: 12px !important;
+  color: #4A4A4A;
+}
+.finance-bill-detail-date{
+  margin-top: 20px;
+  font-size: 12px;
+  color: #4A4A4A;
+  line-height: 20px;
+  height: 20px;
+}
+.finance-bill-detail-date+.finance-bill-detail-date{
+  margin-top: 0;
+}
+.finance-bill-detail-date-item{
+  width: 212px;
+  float: right;
+}
+.finance-bill-detail-date .detail-info-item-label{
+  display: inline-block;
+  width: 50px;
+}
+.finance-bill-detail-date .detail-info-item-content{
+  display: inline-block;
+  vertical-align: top;
+  width: 140px;
+  line-height: 12px;
+  margin-top: 3px;
+  word-wrap: break-word;
+}
+.finance-email-dialog .el-select{
+  width: 100%;
+}
+.finance-bill-bankaccountlist { // .finance-bill-bankaccountlist .el-form-item__label
+  font-size: 12px;
+}
+.finance-bill-detail-selectshow-fields {
+  width: 248px;
+  &.el-select .el-tag {
+    height: 18px;
+  }
+}
+.finance-bill-detail-selectshow-fields2 {
+  width: 290px;
+  &.el-select .el-tag {
+    height: 18px;
+  }
+}
+.finance-bill-detail-selectshow .el-form-item {
+  margin-right: 24px;
+}
+
+.finance-bill-detail-container { // 原无路由，组件显示的形式，现无用
+  position: relative;
+}

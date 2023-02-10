@@ -1,0 +1,122 @@
+.app-wrapper .finance-page {
+	input::placeholder,
+	textarea::placeholder {
+		color: #bfbfbf !important;
+		font-size: 12px;
+	}
+	.stock-apply-cnt {
+		input {
+			height: 28px !important;
+		}
+		textarea {
+			height: 100px !important;
+			min-height: auto !important;
+		}
+		.textarea-box {
+			textarea {
+				height: 60px !important;
+			}
+		}
+	}
+	.notice-publish-cnt {
+		input {
+			height: auto !important;
+		}
+		.el-date-editor--daterange.el-input__inner {
+			width: 200px;
+		}
+		.el-select.el-select--mini {
+			width: 200px;
+		}
+		textarea {
+			height: 200px !important;
+		}
+	}
+	.notice-list-pagination {
+		.pagination-container {
+			text-align: right;
+		}
+	}
+	.notice-info {
+		font-size: 12px;
+		.title {
+			font-size: 16px;
+			font-weight: 600;
+			text-align: center;
+		}
+		.author-box {
+			text-align: center;
+			padding: 10px 0;
+			.author {
+				margin-right: 15px;
+			}
+		}
+		.content {
+			line-height: 1.5;
+		}
+	}
+	.stock-manage-refuse {
+		textarea {
+			height: 100px !important;
+			min-height: auto !important;
+		}
+	}
+	.stock-return-box {
+		.el-input {
+			width: 150px;
+		}
+	}
+	.stock-import-cnt {
+		.el-input.el-input--mini,
+		.el-select.el-select--mini,
+		.el-date-editor.el-input,
+		.el-date-editor.el-input__inner {
+			width: 200px;
+		}
+		.el-select.containercum.el-select--mini,
+		.containercum.el-input.el-input--mini {
+			width: 95px;
+			.el-input__inner {
+				width: 95px;
+			}
+		}
+		.so-list-box {
+			.so-number {
+				margin-bottom: 10px;
+				.so {
+					width: 350px;
+					margin-right: 10px;
+				}
+				.number {
+					width: 120px;
+					margin-left: 10px;
+				}
+			}
+			.remark-box {
+				.remark {
+					width: 500px;
+					textarea {
+						height: 40px !important;
+					}
+				}
+			}
+		}
+	}
+	.saleconfig {
+		.remark {
+			display: flex;
+			textarea {
+				width: 420px;
+				height: 60px !important;
+			}
+		}
+	}
+	.statistic-list {
+		.bkg-tag {
+			padding: 1px 2px;
+			background-color: #bfbfbf;
+			color: #fff;
+			border-radius: 2px;
+		}
+	}
+}

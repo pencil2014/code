@@ -1,0 +1,80 @@
+module.exports = (prams) => {
+    return {
+        "code": 0,
+        "data": {
+            "createdBy": "",
+            "createdTime": null,
+            "remark": "备注雷晓蓉",
+            "state": "valid",
+            "surchargeList": [
+                {
+                    "chargeCode": "DOC",
+                    "chargeName": "文件费",
+                    "chargeMode": "basePrice",
+                    "chargeType": "起运港LOCAL",
+                    "createdBy": 0,
+                    "createdTime": null,
+                    "currency": "USD",
+                    "oid": 3,
+                    "payMode": "预付",
+                    "price": 52.3,
+                    "priceGp20": '',
+                    "priceGp40": '',
+                    "priceHq40": '',
+                    "priceHq45": '',
+                    "rateUnit": "箱",
+                    "state": "valid",
+                    "templateId": 2,
+                    "updatedBy": 0,
+                    "updatedTime": null
+                },
+                {
+                    "chargeCode": "SEAL",
+                    "chargeName": "封条费",
+                    "chargeMode": "basePrice",
+                    "chargeType": "目的港LOCAL",
+                    "createdBy": 0,
+                    "createdTime": null,
+                    "currency": "USD",
+                    "oid": 3,
+                    "payMode": "到付",
+                    "price": 52.3,
+                    "priceGp20": 45,
+                    "priceGp40": 45,
+                    "priceHq40": 45,
+                    "priceHq45": 45,
+                    "rateUnit": "箱型",
+                    "state": "valid",
+                    "templateId": 2,
+                    "updatedBy": 0,
+                    "updatedTime": null
+                },
+                {
+                    "chargeCode": "GKABF",
+                    "chargeName": "港口安保费",
+                    "chargeMode": "basePrice",
+                    "chargeType": "运费附加费",
+                    "createdBy": 0,
+                    "createdTime": null,
+                    "currency": "ASP",
+                    "oid": 4,
+                    "payMode": "无限制",
+                    "price": 521.3,
+                    "priceGp20": 121.2,
+                    "priceGp40": 43,
+                    "priceHq40": 23,
+                    "priceHq45": 43,
+                    "rateUnit": "票",
+                    "state": "valid",
+                    "templateId": 2,
+                    "updatedBy": 0,
+                    "updatedTime": null
+                }
+            ],
+            "templateId": 2,
+            "templateName": "ANL-澳新线",
+            "userId": 0
+        },
+        "msg": "success"
+    }
+};

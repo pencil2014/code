@@ -1,0 +1,153 @@
+.edit-container{
+  position: relative;
+  height: 100%;
+  padding: 0;
+  .edit-row{
+    background:rgba(255,255,255,1);
+    margin: 16px 16px 10px;
+    .row-tit{
+      display: flex;
+      justify-content: space-between;
+      height:50px;
+      background:rgba(255,255,255,1);
+      border-bottom: 1px solid #E9E9E9;
+      border-radius:4px 4px 0px 0px;
+      padding: 0 24px;
+      &.invalid{
+        background-color:rgba(230,57,35,0.1);
+      }
+      .tit{
+        font-size: 16px;
+        color: #222;
+        line-height: 50px;
+        font-weight: 600;
+        .redFont{
+          color: #E63923;
+          font-style: normal;
+        }
+      }
+      .row-tit-operate{
+        display: flex;
+        height: 100%;
+        align-items: center;
+        .row-tit-label{
+          font-size: 12px;
+          margin-left: 40px;
+          em{
+            color: #3E80F5;
+            margin-left: 5px;
+            font-style: normal;
+          }
+          &.row-tit-info{
+            color: #bfbfbf;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+    .row-form{
+      padding: 24px;
+      .row-form-tip{
+        font-size: 12px;
+        line-height: 20px;
+        color: #4a4a4a;
+        margin-bottom: 4px;
+        &.space-between{
+          display: flex;
+          justify-content: space-between;
+          span{
+            display: block;
+          }
+        }
+        .blueFont{
+          cursor: pointer;
+        }
+      }
+      .surcharge-info{
+        width: 100%; 
+        border: 1px solid #ddd; 
+        height: 96px; 
+        border-radius: 4px;
+        // display: flex;
+        padding: 16px;
+        overflow-y: auto;
+        line-height: 20px;
+      }
+      .row-form-item{
+        margin-top: 14px;
+        display: flex;
+        .item-flex{
+          width: 100%;
+        }
+      }
+      &.fullWidth{
+        padding: 1% 0;
+      }
+      .row-flex{
+        display: flex;
+        flex-wrap: wrap;
+        .flex-item{
+          width: 20%;
+          padding: 0 1%;
+          margin-bottom: 14px;
+          &.flex-item-double{
+            width: 40%;
+          }
+          .item-label{
+            font-size: 12px;
+            line-height: 20px;
+            height: 20px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            span{
+              display: block;
+            }
+            .lab{
+              display: flex;
+              em{
+                font-style: normal;
+              }
+              .icon-pricer{
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin: 3px 0 3px 5px;
+                // background:url(../../assets/icon-pricer.png) 0 0 no-repeat;
+              }
+              .icon-feederMatchMode{
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                margin: 3px 0 3px 5px;
+                // background:url(../../../../../assets/icon-feederMatchMode.png) 0 0 no-repeat;
+              }
+            }
+          }
+        }
+      }
+    }
+    &.others-row{
+      margin-bottom: 64px;
+      .row-form{
+        padding-top: 10px;
+      }
+    }
+  }
+  .edit-footer{
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    height:48px;
+    padding: 8px;
+    left: 144px;
+    bottom: 0;
+    right: 0;
+    background:rgba(255,255,255,1);
+    box-shadow:0px -2px 10px 0px rgba(233,233,233,1);
+    z-index: 99;
+    .edit-footer-info{
+      line-height: 32px;
+    }
+  }
+}

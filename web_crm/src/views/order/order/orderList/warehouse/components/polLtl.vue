@@ -1,0 +1,296 @@
+<template>
+	<!-- 散车收货 -->
+	<div id="warehouseInplan" class="edit-row">
+		<div class="default-table">
+			<DefaultTableComp ref="defaultTableComp" :tableInfo="tableInfo" :tableConfig="tableConfig" @tableClick="tableClick">
+				<template>
+					委派状态：
+					<el-select @change="tableClick" v-model="dispatchStatusValue" placeholder="请选择" size="mini" :disabled="isBd">
+						<el-option v-for="(item, index) in dictMap.truckIntrustStatus" :key="index" :label="item.label" :value="item.value"> </el-option>
+					</el-select>
+					<el-button size="mini" type="default" class="ml10">输出派车单</el-button>
+					<el-button size="mini" type="primary" class="ml10" @click="handleAdd">新增散车派送</el-button>
+				</template>
+			</DefaultTableComp>
+		</div>
+		<!-- 散车收货详情 -->
+		<template v-if="showInfoDialog">
+			<CarInfoDetail :detailData="in_formData" @close="close" @handleConfirm="handleSave"></CarInfoDetail>
+		</template>
+	</div>
+</template>
+
+<script>
+import store from '@/store'
+import { mapState } from 'vuex'
+import { getDictLabel, getDictMap, deleteAlert, copyArry } from '@/utils/tools'
+import { handleWarehouseData } from '../../../js/handleData'
+import DefaultTableComp from '../../../components/defaultTableComp'
+import { whTruckIntrustList, saveBulk, whTruckIntrustDelete, bulkDetail, whTruckIntrustGetIntrustNo, whTruckIntrustUpdateIntrustStatus } from '@/api/order/shippingTruck'
+import CarInfoDetail from './carDialog/carInfoDetail'
+
+export default {
+	data() {
+		return {
+			oQuery: this.$route.query,
+			tableData: [],
+			oid: '',
+			warehouseInplanStatus: store.state.dict.dictMap.warehouseInplanStatus, // 进仓状态
+			showPlanOutWarehouse: false, // 出仓计划
+			out_formData: {}, // 出仓计划数据
+			showInfoDialog: false, // 实际进仓
+			in_formData: {}, // 实际进仓数据
+			tableInfo: {
+				title: '',
+				titleBtnList: [
+					{ label: '派车完成', key: 'dispatchStatus', hide: true }
+					// // {label: "委派完成", key: "intrustStatus"},
+				]
+			},
+			// 表格配置项
+			tableConfig: {
+				style: {},
+				tableIndex: {
+					show: false
+				},
+				options: {
+					// 是否支持解锁列表修改,默认锁定列表不可更改
+					lockState: false,
+					// 是否支持列表项选中功能
+					mutiSelect: true,
+
+					// 多选框状态判断 {false不可选, true可选}
+					checkSelectable({ oid }) {
+						return oid ? true : false
+					}
+				},
+				columns: handleWarehouseData.carListColumn, //  表格显示的表头
+				list: (this.detailData && copyArry(this.detailData.warehouseInItems)) || [],
+				// 操作按钮组
+				operationBtns: { show: false },
+				// 操作提示
+				tips: {
+					text: '',
+					show: false
+				},
+				// 操作按钮组
+				operationBtns: {
+					width: '150px',
+					fixed: 'right',
+					show: true,
+					callback: (action, $index, row, item) => {
+						let fn = this['handle' + action]
+						if (typeof fn !== 'function') return
+						this['handle' + action](row, $index)
+					},
+					data: [
+						{
+							label: '详情',
+							type: 'text',
+							show: true,
+							action: 'Info'
+						},
+						{
+							label: '删除',
+							type: 'text',
+							show: true,
+							action: 'Delete'
+						}
+					]
+				},
+				// 分页
+				pagination: {
+					show: false,
+					total: 0
+				}
+			},
+			dispatchStatusValue: '' // 委托状态值
+		}
+	},
+	created() {
+		this.init()
+	},
+	mounted() {},
+	props: {
+		tabMenus: {
+			type: Array,
+			default: () => []
+		}
+	},
+	computed: {
+		...mapState({
+			dictMap: state => state.dict.dictMap,
+			orderNo: state => state.order.orderNo,
+			custid: state => state.order.custid,
+			ordDetRole: state => state.order.orderList.ordDetRole,
+			polLtlDispatchType: state => state.orderService.polLtlDispatchType
+		}),
+		isAc() {
+			return this.ordDetRole === 'ac'
+		},
+    isDoc() {
+			return this.ordDetRole === 'doc'
+		},
+		isOp() {
+			return this.ordDetRole === 'op'
+		},
+		isBd() {
+			let isBd = this.ordDetRole === 'bd' || this.ordDetRole === 'obd' || this.isDoc || this.isAc
+			let findItem = this.tabMenus.find(item => item.code === 'pol_warehouse')
+			let isJoint = findItem ? findItem.isJoint : false
+			return isBd || isJoint
+		}
+	},
+	components: {
+		DefaultTableComp,
+		CarInfoDetail
+	},
+	methods: {
+		// 获取so列表
+		init() {
+			this.getList()
+			this.tableConfig.operationBtns.data.map(item => {
+				Object.assign(item, {
+					disabled: this.isBd ? true : false
+				})
+			})
+		},
+		getList() {
+			let data = { orderNo: this.oQuery.orderNo, jointNo: this.oQuery.jointNo, loadType: 'bulk' }
+			whTruckIntrustList(data).then(res => {
+				let list = res.data
+				list.map(item => {
+					let findItem = this.polLtlDispatchType.find(ele => ele.value === item.dispatchType)
+					item.dispatchStatus_cn = getDictLabel('truckDispatchStatus', item.dispatchStatus)
+					item.intrustStatus_cn = getDictLabel('truckIntrustStatus', item.intrustStatus)
+					item.warehouseInoutType_cn = findItem ? findItem.label : ''
+				})
+				this.tableConfig.list = list && copyArry(list)
+			})
+		},
+		// 表格头部按钮回调
+		tableClick(value) {
+			let checked = this.$refs.defaultTableComp.selectedCheckbox.map(item => item.oid)
+			if (checked.length <= 0) {
+				this.dispatchStatusValue = ''
+				this.$message({
+					message: '请勾选委托信息',
+					type: 'warning'
+				})
+				return false
+			}
+			this.$confirm('是否确认修改状态?', '警告', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+			})
+				.then(() => {
+					return whTruckIntrustUpdateIntrustStatus({
+						status: value,
+						oids: checked,
+						orderNo: this.oQuery.orderNo,
+						jointNo: this.oQuery.jointNo
+					})
+				})
+				.then(response => {
+					this.$message({
+						type: 'success',
+						message: '状态修改成功！',
+						duration: 1000,
+						onClose: () => {
+							this.dispatchStatusValue = ''
+							this.getList()
+						}
+					})
+				})
+				.catch(err => {
+					this.dispatchStatusValue = ''
+				})
+		},
+		// 删除
+		handleDelete(row) {
+			deleteAlert(this, whTruckIntrustDelete, { oid: row.oid, orderNo: this.oQuery.orderNo, jointNo: this.oQuery.jointNo }, this.deleteCallback)
+		},
+		// 删除回调
+		deleteCallback() {
+			this.showInfoDialog = false
+			this.getList()
+		},
+		// 新增
+		handleAdd() {
+			this.in_formData = this.setTableData({})
+			this.in_formData.type = 'add'
+			this.showInfoDialog = true
+		},
+		// 详情
+		handleInfo(row) {
+			let data = { oid: row.oid, orderNo: this.oQuery.orderNo, jointNo: this.oQuery.jointNo }
+			bulkDetail(data).then(res => {
+				this.in_formData = this.setTableData(res.data)
+				this.in_formData.type = 'info'
+				this.showInfoDialog = true
+			})
+		},
+
+		// 保存
+		handleSave(data) {
+			console.log(data)
+			let hasCargo = true
+			let hasPackageType = true
+			let hasQuantity = true
+			let hasWeight = true
+			let hasVolume = true
+			data.jointNo = this.oQuery.jointNo
+			data.orderNo = this.oQuery.orderNo
+			data.loadType = 'bulk'
+			data.truckLoads.map(item => {
+				hasCargo = item.truckCargos.every(ele => ele.cargoId) && item.truckCargos.length
+				hasPackageType = item.truckCargos.every(ele => ele.packageType) && item.truckCargos.length
+				hasQuantity = item.truckCargos.every(ele => ele.quantity) && item.truckCargos.length
+				hasWeight = item.truckCargos.every(ele => ele.weight) && item.truckCargos.length
+				hasVolume = item.truckCargos.every(ele => ele.volume) && item.truckCargos.length
+				delete item.truckLoadVos
+				delete item.truckCargos_copy
+				delete item.planNo_copy
+			})
+			if (!hasCargo) {
+				return this.$message({ type: 'error', message: '请选择正确的商品' })
+			}
+			if (!hasPackageType) {
+				return this.$message({ type: 'error', message: '包装类型不能为空' })
+			}
+			if (!hasQuantity) {
+				return this.$message({ type: 'error', message: '件数不能为空' })
+			}
+			// if (!hasWeight) {
+			//   return this.$message({type: 'error', message: '毛重不能为空'})
+			// }
+			// if (!hasVolume) {
+			//   return this.$message({type: 'error', message: '体积不能为空'})
+			// }
+			saveBulk(data).then(res => {
+				this.showInfoDialog = false
+				this.getList()
+				this.$message({ type: 'success', message: '保存成功' })
+			})
+		},
+
+		close() {
+			this.showInfoDialog = false
+		},
+		// 点击详情时，整理数据
+		setTableData(data) {
+			data.truckLoads = (data.truckWarehouseLoads && copyArry(data.truckWarehouseLoads)) || []
+			data.truckLoads.map(item => {
+				item.truckLoadVos.map(o => Object.assign(o, o.truckDriver))
+				item.truckCargos_copy = []
+			})
+			delete data.truckWarehouseLoads
+			console.log(data)
+			return data
+		}
+	}
+}
+</script>
+
+<style lang="scss"></style>

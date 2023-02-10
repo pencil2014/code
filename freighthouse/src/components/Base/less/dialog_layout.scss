@@ -1,0 +1,21 @@
+.dialog-layout {
+  .el-dialog{
+    
+  }
+  // 垂直居中
+  .el-dialog__wrapper{
+    // display: flex; 
+    // align-items: center;
+  }
+  .dialog-footer{
+    .el-button{
+      padding: 0 10px;
+      height: 20px;
+      // span {
+      //   display: block;
+      //   line-height: 18px;
+      //   height: 18px;
+      // }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+module.exports = (params) => {
+    return {
+        "code":0,
+        "data":{
+            "applyNo":"PREPAY20201012000005",
+            "hasInvoice":"no",
+            "delayInvoice":"no",
+            "payInfo":{
+                "applyPayAmt":20000,
+                "currency":"CNY",
+                "payAccountNo":"3728648324",
+                "payBankAccountId":0,
+                "payBankBranch":"",
+                "payBankCode":"BOC",
+                "payBankName":"建设银行",
+                "payCompCode":"",
+                "payCompName":"",
+                "payInfoId":123120,
+                "payWay":"付款方式：电汇/现金/支票/预冲支付",
+                "payWayDesc":"付款方式描述",
+                "recvAccountName":"北京北京",
+                "recvAccountNo":"600023232",
+                "recvBankAccountId":0,
+                "recvBankBranch":"",
+                "recvBankCode":"ABC",
+                "recvBankName":"农业银行",
+                "recvCorpCode":"GYS232432",
+                "recvCorpName":"上海平安付"
+            },
+            "payOrderId":1201392,
+            "prepayAccountId":123,
+            "prepayApplyTimeStr":"2020-10-10 10:12:23",
+            "remark":"",
+            "settleCompCode":"000001",
+            "settleCompName":"深圳分公司",
+            "state":"valid",
+            "confirmStatus":"approved",
+            "confirmStatusDesc":"审批通过",
+            "createdBy":2103213,
+            "createdName":"",
+            "updatedBy":2103213,
+            "updatedName":""
+        },
+        "msg":"success"
+    }
+}

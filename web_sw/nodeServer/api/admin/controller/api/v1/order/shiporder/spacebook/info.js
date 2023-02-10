@@ -1,0 +1,253 @@
+module.exports = (params) => {
+    return {
+        "code": 0,
+        "data": {
+            "auditRemark": "test",
+            "barge": {
+                "cutoffTime": "2020-01-21",
+                "etdTime": "2020-11-30",
+                "porPortCode": "132",
+                "shipName": "",
+                "tdTime": null,
+                "transitWay": "type1",
+                "voyage": ""
+            },
+            "bkgReqNo": "BKG2020081900024",
+            "bkgReqType": "",
+            "bkgStatus": "pass",
+            "shipRefNo": "BKG2020081900024",
+            "bkgRemark": "XXXXXX",
+            "auditEmployeeId": "10",
+            "auditEmployeeName": "张三",
+            "orgAuditEmployeeId": "12",
+            "orgAuditEmployeeName": "黄黄",
+            "cargoList": [
+                {
+                    "boxRemark": "111",
+                    "cname": "ee",
+                    "commodityDesc": "",
+                    "commodityTypeCode": "",
+                    "dangerousCode": "",
+                    "dangerousGrade": "type1",
+                    "ename": "cc",
+                    "height": 0,
+                    "hscode": "1232",
+                    "isWoodenPackage": "y",
+                    "length": 0,
+                    "mark": "",
+                    "oid": 9,
+                    "packageGroup": "",
+                    "packageInfo": "",
+                    "property": "type1",
+                    "quantity": 0,
+                    "shipperCustid": 0,
+                    "shortCname": "",
+                    "volume": 0,
+                    "weight": 0,
+                    "width": 0
+                },
+                {
+                    "boxRemark": "1122",
+                    "cname": "ee",
+                    "commodityDesc": "",
+                    "commodityTypeCode": "",
+                    "dangerousCode": "",
+                    "dangerousGrade": "type1",
+                    "ename": "cc",
+                    "height": 0,
+                    "hscode": "123123",
+                    "isWoodenPackage": "n",
+                    "length": 0,
+                    "mark": "",
+                    "oid": 10,
+                    "packageGroup": "",
+                    "packageInfo": "",
+                    "property": "type1",
+                    "quantity": 0,
+                    "shipperCustid": 0,
+                    "shortCname": "",
+                    "volume": 0,
+                    "weight": 0,
+                    "width": 0
+                }
+            ],
+            "containerList": [
+                {
+                    "containerList": [
+                        {
+                            "airMete": "",
+                            "airMeteType": "type1",
+                            "boxRemark": "无",
+                            "containerNum": 2,
+                            "containerType": "20GP",
+                            "gangeType": "",
+                            "humidity": "",
+                            "sizeAfter": "",
+                            "sizeBefore": "",
+                            "sizeLeft": "",
+                            "sizeRight": "",
+                            "specialHeight": 0,
+                            "specialLength": 0,
+                            "specialWeight": 0,
+                            "temperatureMax": "",
+                            "temperatureMin": "",
+                            "temperatureSet": "",
+                            "temperatureType": "type1",
+                            "volume": 23,
+                            "weight": 111
+                        },
+                        {
+                            "airMete": "",
+                            "airMeteType": "type1",
+                            "boxRemark": "无",
+                            "containerNum": 1,
+                            "containerType": "40GP",
+                            "gangeType": "",
+                            "humidity": "",
+                            "sizeAfter": "",
+                            "sizeBefore": "",
+                            "sizeLeft": "",
+                            "sizeRight": "",
+                            "specialHeight": 0,
+                            "specialLength": 0,
+                            "specialWeight": 0,
+                            "temperatureMax": "",
+                            "temperatureMin": "",
+                            "temperatureSet": "",
+                            "temperatureType": "type1",
+                            "volume": 23,
+                            "weight": 111
+                        }
+                    ],
+                    "isSplit": "n",
+                    "soGroup": "G0"
+                },
+                {
+                    "containerList": [
+                        {
+                            "airMete": "",
+                            "airMeteType": "type1",
+                            "boxRemark": "无",
+                            "containerNum": 5,
+                            "containerType": "40GP",
+                            "gangeType": "",
+                            "humidity": "",
+                            "sizeAfter": "",
+                            "sizeBefore": "",
+                            "sizeLeft": "",
+                            "sizeRight": "",
+                            "specialHeight": 0,
+                            "specialLength": 0,
+                            "specialWeight": 0,
+                            "temperatureMax": "",
+                            "temperatureMin": "",
+                            "temperatureSet": "",
+                            "temperatureType": "type1",
+                            "volume": 23,
+                            "weight": 111
+                        },
+                        {
+                            "airMete": "",
+                            "airMeteType": "type1",
+                            "boxRemark": "无",
+                            "containerNum": 2,
+                            "containerType": "40HQ",
+                            "gangeType": "",
+                            "humidity": "",
+                            "sizeAfter": "",
+                            "sizeBefore": "",
+                            "sizeLeft": "",
+                            "sizeRight": "",
+                            "specialHeight": 0,
+                            "specialLength": 0,
+                            "specialWeight": 0,
+                            "temperatureMax": "",
+                            "temperatureMin": "",
+                            "temperatureSet": "",
+                            "temperatureType": "type1",
+                            "volume": 23,
+                            "weight": 111
+                        }
+                    ],
+                    "isSplit": "n",
+                    "soGroup": "G1"
+                }
+            ],
+            "historyContainerList": [],
+            "intrustRemark": "",
+            "orderNo": "S202008190000395",
+            "ship": {
+                "bkgAgentSupplierId": 0,
+                "blType": "",
+                "carrierLineName": "1",
+                "carrierService": "2",
+                "contractNo": "12",
+                "contractSupplierId": 1,
+                "cyCutOff": "2013-09-09",
+                "etdTime": "",
+                "freetimeSys": "",
+                "issueMode": "notify",
+                "podPortCode": "33332",
+                "polPortCode": "123",
+                "shipAgentSupplierId": 1,
+                "shipCarrierCode": "aaaaaaaa",
+                "sysLineCode": "1",
+                "tdTime": null,
+                "transitPortCode": "12312,3123,111",
+                "transitWay": "type1",
+                "vessel": "1",
+                "voyage": "2"
+            },
+            "soList": [
+                {
+                    "so": "123345566",
+                    "containerInfo": "20GP×2 + 40GP×6 + 40HQ×2",
+                    "vessel": "2222",
+                    "voyage": "dddd",
+                    "porPortCode": "顶顶顶顶顶",
+                    "polPortCode": "s顶顶顶顶",
+                    "podPortCode": "sss顶顶顶",
+                    "bkgRemark": "备注",
+                    "soFileNo": "sssssss",
+                    "soFileName": "name1"
+                }
+            ],
+            "transport": null,
+            "workAssign": [
+                {
+                    "deptCode": "000",
+                    "employeeId": 1,
+                    "employeeName": "张三",
+                    "jobCname": "操作",
+                    "jobCode": "OP",
+                    "jobEname": "OP"
+                },
+                {
+                    "deptCode": "000",
+                    "employeeId": 1,
+                    "employeeName": "张三",
+                    "jobCname": "业务操作",
+                    "jobCode": "OBD",
+                    "jobEname": "OBD"
+                },
+                {
+                    "deptCode": "000",
+                    "employeeId": 1,
+                    "employeeName": "张三",
+                    "jobCname": "审核",
+                    "jobCode": "BU",
+                    "jobEname": "BU"
+                },
+                {
+                    "deptCode": "000",
+                    "employeeId": 1,
+                    "employeeName": "张三",
+                    "jobCname": "文件",
+                    "jobCode": "FILE",
+                    "jobEname": "FILE"
+                }
+            ]
+        },
+        "msg": "success"
+    }
+}

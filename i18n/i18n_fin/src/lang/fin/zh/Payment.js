@@ -1,0 +1,42 @@
+export default {
+  payErr: '标记付错',
+  payDetail: '付款详情',
+  addRecords: '添加购汇记录',
+  shortName: '付款账户简称',
+  bankslipFile: '水单文件',
+  bankslipTips: '水单文件不能为空',
+  otherPayables: '其他应付款',
+  subjects: '处理科目',
+  overpayment: '多付处理方式',
+  ourPayment: '我司多付金额',
+  transferNote: '转账说明',
+  bankcharges: '银行手续费',
+  platformFee: '支付平台代付手续费抵扣',
+  affiPlatform: '关联支付平台代付手续费',
+  exchangePurch: '购汇信息',
+  prepaymentOff: '预付抵账',
+  underwritType: '核销类型',
+  paymentType: '付款类型',
+  payOrderSta: '付款单状态',
+  covered: '客户承担手续费',
+  errInfo: '付错信息',
+  handFeeType: '手续费类型',
+  apportionment: '本次分摊金额',
+  apportAmt: '已分摊金额',
+  paymentNo: '付款申请单号',
+  originalAmt: '可核销原币金额',
+  writeoffAmt: '核销原币金额',
+  generateTips: '请勾选需要生成凭证的项!',
+  exportPayment:'导出付款核销单',
+  exportWf: '是否确认导出收款核销单?',
+  uploadTips: '支持doc,docx,pdf,xls,xlsx,jpg,png,jpeg,bmp,tif,image,txt,zip,rar格式文件， 且文件大小在5M内',
+  saveTemp: '是否保存该条模板?',
+  overwritten: '已存在该名称的模板，是否覆盖?',
+  templateName: '请输入模板名称',
+  delTemp: '是否删除 {composeKey} 这条模板?',
+
+
+
+
+
+}

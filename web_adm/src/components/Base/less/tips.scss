@@ -1,0 +1,18 @@
+.icon-tips{
+    display: block;
+    width: 14px;
+    height: 14px;
+    // background:rgba(24,144,255,1);
+    text-align: center;
+    background: url(../../../assets/icon_tips.png) center center no-repeat; 
+    margin-right: 10px;
+    margin: 0 10px 0 0;
+}
+.clear-tips{
+    height: 14px;
+    line-height: 14px;
+    color: #3E80F5;
+    font-size: 12px;
+    margin-left: auto;
+    cursor: pointer;
+}

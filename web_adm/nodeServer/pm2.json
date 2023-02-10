@@ -1,0 +1,30 @@
+{
+  "name": "ashesNode",
+  "max_memory_restart" : "300M",
+  "script": "./app.js",
+  "cwd": "./",
+  "watch": [
+    "api",
+    "*.js"
+  ],
+  "ignore_watch": [
+    "node_modules",
+    "logs",
+    "*.json",
+    "*.md",
+    "*.html"
+  ],
+  "watch_options": {
+    "followSymlinks": false
+  },
+  "error_file": "./logs/app-err.log",
+  "out_file": "./logs/app-out.log",
+  "instances": 2,
+  "exec_mode": "cluster",
+  "env_dev": {
+    "NODE_ENV": "development"
+  },
+  "env_pro": {
+    "NODE_ENV": "production"
+  }
+}

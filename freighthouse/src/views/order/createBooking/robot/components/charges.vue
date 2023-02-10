@@ -1,0 +1,117 @@
+<template>
+  <div class="charges-cnt">
+    <el-form
+      :inline="true"
+      :model="form"
+      :rules="rules"
+      class="form"
+      label-position="top"
+      ref="form"
+      size="mini"
+    >
+      <el-form-item label="Freight Term" prop="chargeTerm">
+        <el-select
+          class="large-select"
+          clearable
+          placeholder="Select One"
+          size="mini"
+          v-model="form.chargeTerm"
+        >
+          <el-option
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+            v-for="item in chargeTermList"
+          ></el-option>
+        </el-select>
+      </el-form-item>
+    </el-form>
+  </div>
+</template>
+
+<script>
+export default {
+  inject: ['dictAll', 'carrierSource'],
+  props: {
+    chargesOption: {
+      required: true,
+      type: Object,
+      default: () => {},
+    },
+    fieldConfigObj: {
+      type: Object,
+      default: () => {},
+    },
+    fieldConfigList: {
+      type: Array,
+      default: () => [],
+    }
+  },
+  data() {
+    return {
+      form: {
+        chargeTerm: '',
+      },
+      rules: this.fieldConfigObj,
+      dictList: [],
+      chargeTermList: [],
+      loading: false,
+    }
+  },
+  created() {
+    this.form = this.chargesOption
+    this.getDictData()
+  },
+  methods: {
+    getDictData() {
+      // 初始化支付方式
+      const source2 = this.dictAll.dictList.filter(
+        (item) => item.groupCode === 'hmm_ocean_freight_type'
+      )[0]
+      this.chargeTermList = source2.dictItems.map((item) => {
+        const { descpt, itemCode, baseItemCode } = item
+        return {
+          label: `${itemCode}-${descpt}`,
+          value: itemCode,
+          baseItemCode,
+        }
+      })
+      if (!this.chargeTermList.some(item => item.value === this.form.chargeTerm)) {
+        this.form.chargeTerm = ''
+        this.$nextTick(() => {
+          this.$refs.form.clearValidate()
+        })
+      }
+    },
+    // 数据校验
+    validateForm() {
+      let flag = null
+      this.$refs['form'].validate((valid) => {
+        if (valid) {
+          flag = true
+        } else {
+          flag = false
+        }
+      })
+      return flag
+    },
+    // 去重
+    unique(arr) {
+      const res = new Map()
+      return arr.filter((item) => !res.has(item.cityUnCode) && res.set(item.cityUnCode, 1))
+    },
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.charges-cnt {
+  padding: 8px;
+  .form {
+    display: flex;
+    .el-form-item {
+      width: 25%;
+    }
+  }
+}
+</style>

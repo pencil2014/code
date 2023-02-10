@@ -1,0 +1,39 @@
+.notice-container {
+	padding: 10px;
+}
+.notice-container .input-width {
+	margin-right: 10px;
+}
+
+.notice-container.search-layout .el-input__inner,
+.notice-container.search-layout .el-input--mini .el-input__icon,
+.notice-dialog .el-input--mini .el-input__icon {
+	height: 20px !important;
+	line-height: 20px !important;
+}
+.notice-container .el-button--mini,
+.notice-dialog .dialog-footer .el-button--mini {
+	padding: 3px 6px !important;
+}
+
+.notice-container .search-layout {
+	margin-bottom: 4px;
+}
+.notice-container .notice-tb-header {
+	color: #222222;
+	font-weight: 700;
+}
+.notice-container .delete-btn {
+	color: #cd4130;
+	margin-left: 0px;
+}
+.notice-container .pagination-container {
+	display: flex;
+	flex-direction: row-reverse;
+}
+.notice-container .el-pagination__total,
+.notice-container .el-pager li,
+.notice-container .el-input__inner,
+.notice-container .el-pagination__sizes .el-input .el-input__inner {
+	font-size: 12px !important;
+}

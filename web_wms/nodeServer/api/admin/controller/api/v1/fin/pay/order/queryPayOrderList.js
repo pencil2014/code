@@ -1,0 +1,57 @@
+module.exports = (params) => {
+    return {
+        "code":0,
+        "data":{
+            "allColumns":[
+            ],
+            "configColumns":[
+            ],
+            "currPage":1,
+            "list":[
+                {
+                    "applyAmt":23000,
+                    "balanceAmt":23000,
+                    "bankSeqNo":"",
+                    "bankseqFileNo":"",
+                    "confirmName":"",
+                    "confirmStatus":"no",
+                    "confirmTime":null,
+                    "createdName":"业务【勿动】",
+                    "createdTime":"2020-10-13 06:59:49",
+                    "currency":"CNY",
+                    "errorStatus":"no",
+                    "hasInvoice":"",
+                    "interTransferFee":0,
+                    "isMerge":"no",
+                    "lessPayAmt":0,
+                    "lessPayDealway":"",
+                    "orderType":"prepay",
+                    "payCompCode":"000001",
+                    "payCompName":"深圳分公司",
+                    "payOrderNo":"PAY20201013709000006",
+                    "paySettleApplyNo":"",
+                    "payWay":"prepay",
+                    "payWriteoffStatus":"no",
+                    "prepayApplyNo":"PREPAY20201012000005",
+                    "realPayAmt":23000,
+                    "remark":"",
+                    "sourceApplyNo":"PREPAY20201012000005",
+                    "sourceType":"prepay",
+                    "state":"",
+                    "toPayOrderId":0,
+                    "transferFeeAmt":0,
+                    "writeoffAmt":0,
+                    "invoiceNo":"",
+                    "payAccountNo":"3728648324",
+                    "payBankName":"建设银行",
+                    "recvAccountName":"北京北京",
+                    "recvAccountNo":"600023232",
+                    "recvBankName":"农业银行",
+                    "recvCorpName":"上海平安付",
+                    "settleOrderNo":""
+                }
+            ]
+        },
+        "msg":"success"
+    }
+}

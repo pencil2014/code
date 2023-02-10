@@ -1,0 +1,297 @@
+import request from '@/utils/request'
+//加价规则列表
+export function priceRuleList(data) {
+	return request({
+		url: '/swmng/priceRule/listPage',
+		method: 'post',
+		data
+	})
+}
+// 用户群组列表
+export function groupList(data) {
+	return request({
+		url: '/swmng/group/dictList',
+		method: 'post',
+		data
+	})
+}
+// 加价规则保存
+export function priceRuleSave(data) {
+	return request({
+		url: '/swmng/priceRule/save',
+		method: 'post',
+		data
+	})
+}
+// 加价规则失效
+export function priceRuleInvalid(data) {
+	return request({
+		url: '/swmng/priceRule/invalid',
+		method: 'post',
+		data
+	})
+}
+// 加价规则生效
+export function priceRuleValid(data) {
+	return request({
+		url: '/swmng/priceRule/valid',
+		method: 'post',
+		data
+	})
+}
+// 运价线路列表
+export function webRouteList(data) {
+	return request({
+		url: '/swmng/webRoute/listPage',
+		method: 'post',
+		data
+	})
+}
+// 批量失效
+export function webRouteInvalid(data) {
+	return request({
+		url: '/swmng/webRoute/invalid',
+		method: 'post',
+		data
+	})
+}
+// 批量生效
+export function webRouteValid(data) {
+	return request({
+		url: '/swmng/webRoute/valid',
+		method: 'post',
+		data
+	})
+}
+// 订单列表
+export function orderList(data) {
+	return request({
+		url: '/swmng/ship/order/list',
+		method: 'post',
+		data
+	})
+}
+// 修改订单
+export function orderSave(data) {
+	return request({
+		url: '/swmng/ship/order/save',
+		method: 'post',
+		data
+	})
+}
+// 订单详情
+export function orderInfo(data) {
+	return request({
+		url: '/swmng/ship/order/info',
+		method: 'post',
+		data
+	})
+}
+// 受理订单
+export function orderAccept(data) {
+	return request({
+		url: '/swmng/ship/order/accept',
+		method: 'post',
+		data
+	})
+}
+// 拒绝受理
+export function orderRefuse(data) {
+	return request({
+		url: '/swmng/ship/order/refuse',
+		method: 'post',
+		data
+	})
+}
+// 特价列表
+export function discountList(data) {
+	return request({
+		url: '/swmng/discountRoute/listRoutePage',
+		method: 'post',
+		data
+	})
+}
+// 批量失效
+export function discountInvalid(data) {
+	return request({
+		url: '/swmng/discountRoute/invalid',
+		method: 'post',
+		data
+	})
+}
+// 新增特价
+export function saveDiscountRoute(data) {
+	return request({
+		url: '/swmng/discountRoute/saveDiscountRoute',
+		method: 'post',
+		data
+	})
+}
+// 线路数据
+export function listAddRoutePage(data) {
+	return request({
+		url: '/swmng/discountRoute/listAddRoutePage',
+		method: 'post',
+		data
+	})
+}
+// 客户审核列表
+export function customerList(data) {
+	return request({
+		url: '/swmng/corpSubmit/list',
+		method: 'post',
+		data
+	})
+}
+// 天眼查企业信息
+export function tycDetail(data) {
+	return request({
+		url: '/swmng/corpSubmit/tyc/detail',
+		method: 'post',
+		data
+	})
+}
+// 客户审核通过
+export function customerVerify(data) {
+	return request({
+		url: '/swmng/corpSubmit/verify/pass',
+		method: 'post',
+		data
+	})
+}
+// 客户审核拒绝
+export function customerRefuse(data) {
+	return request({
+		url: '/swmng/corpSubmit/verify/refuse',
+		method: 'post',
+		data
+	})
+}
+// 客户审核详情
+export function customerDetail(data) {
+	return request({
+		url: '/swmng/corpSubmit/detail',
+		method: 'post',
+		data
+	})
+}
+// 客户信息编辑
+export function corpSubmit(data) {
+	return request({
+		url: '/swmng/corpSubmit/edit',
+		method: 'post',
+		data
+	})
+}
+// 附件列表
+export function fileList(data) {
+	return request({
+		url: '/swmng/ship/order/file/list',
+		method: 'post',
+		data
+	})
+}
+// 广告配置列表
+export function adList(data) {
+	return request({
+		url: '/swmng/ad/list',
+		method: 'post',
+		data
+	})
+}
+// 保存广告配置列表
+export function adSave(data) {
+	return request({
+		url: '/swmng/ad/save',
+		method: 'post',
+		data
+	})
+}
+// 广告配置启用
+export function adEnable(data) {
+	return request({
+		url: '/swmng/ad/enable',
+		method: 'post',
+		data
+	})
+}
+// 广告配置禁用
+export function adDisable(data) {
+	return request({
+		url: '/swmng/ad/disable',
+		method: 'post',
+		data
+	})
+}
+// 广告位顺序调整
+export function adSortChange(data) {
+	return request({
+		url: '/swmng/ad/sort/change',
+		method: 'post',
+		data
+	})
+}
+// 新闻咨询列表
+export function newsList(data) {
+	return request({
+		url: '/swmng/news/list',
+		method: 'post',
+		data
+	})
+}
+// 保存新闻咨询
+export function newsSave(data) {
+	return request({
+		url: '/swmng/news/save',
+		method: 'post',
+		data
+	})
+}
+// 启用新闻咨询
+export function newsEnable(data) {
+	return request({
+		url: '/swmng/news/enable',
+		method: 'post',
+		data
+	})
+}
+// 禁用新闻咨询
+export function newsDisable(data) {
+	return request({
+		url: '/swmng/news/disable',
+		method: 'post',
+		data
+	})
+}
+// 新闻咨询详情
+export function newsInfo(data) {
+	return request({
+		url: '/swmng/news/info',
+		method: 'post',
+		data
+	})
+}
+// 参与人查询
+export function getParticipants(data) {
+	return request({
+		url: '/base/webapi/dept/participants',
+		method: 'post',
+		data
+	})
+}
+// 默认参与人
+export function workAssignList(data) {
+	return request({
+		url: '/swmng/ship/order/workAssign/list',
+		method: 'post',
+		data
+	})
+}
+// 邀请码列表
+export function inviteCodeList(data) {
+	return request({
+		url: '/swmng/corpSubmit/inviteCodeList',
+		method: 'post',
+		data
+	})
+}

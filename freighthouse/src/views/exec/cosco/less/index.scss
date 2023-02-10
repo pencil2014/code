@@ -1,0 +1,210 @@
+
+.orderTable /deep/ .el-table__row {
+  &:nth-of-type(2n) {
+    background: #e9f4ff;
+  }
+}
+
+.tableTitle {
+  text-align: left;
+  // span {
+  //   padding: 0 30px;
+  // }
+  :first-child {
+    padding: 0;
+  }
+}
+.shippingLines {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  .item {
+    flex: 1;
+    word-break: break-all;
+    padding: 0 10px;
+  }
+  .orderInfo,
+  .waybillNumber {
+    min-width: 150px;
+  }
+  .orderInfo {
+    padding-left: 50px;
+  }
+  .packageTime {
+    min-width: 180px;
+  }
+  .caseNumber,
+  .goodsInfo {
+    min-width: 120px;
+  }
+  .route,
+  .supplier {
+    min-width: 200px;
+  }
+  .addrStyle {
+    min-width: 300px;
+  }
+  .status {
+    min-width: 130px;
+  }
+  .operate {
+    min-width: 80px;
+  }
+}
+.haulangTypeClass{
+    padding: 30px;
+    color:"#999"
+}
+
+.schedule-data{
+  width:570px;
+  .circle-center{
+      text-align: center;
+      height: 18px;
+      .hollow-circle{
+        display: inline-block;
+        text-align: center;
+        width: 8px;
+        height: 8px;
+        border: 1px solid #00508e;
+        border-radius: 50%;
+       }
+       .solid-circle{
+        display: inline-block;
+        text-align: center;
+        width: 8px;
+        height: 8px;
+        background-color: #00508e;
+        border-radius: 50%;
+       }
+      .beeline{
+        margin: -2px 1px;
+        display: inline-block;
+        width: 23%;
+        border-top: 1px solid #00508e;
+        position: absolute;
+        top: 10px;
+      } 
+  }
+ .time-display{
+    font-size: 10px;
+    text-align: center;
+   .horizontal-content-div{
+      height: 14px;
+    }
+ }
+
+
+
+}
+.symbol{
+   padding-left: 60px;
+}
+
+.product-price-wrapper{
+     width:455px;
+    background-color: #f7f7fb;
+    padding: 5px 30px 5px 15px;
+    border-radius: 3px;
+    min-height: 78px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+   .priceGroup{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      .priceItem{
+        text-align: end;
+        min-width: 68px;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        .ectPrice{
+          font-size: 19px;
+          font-weight: 600;
+          overflow-wrap: unset;
+          color: #f5a623;
+        }
+
+      }
+
+   }
+
+}
+.result-price-footer{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 12px;
+    padding-top: 5px;
+    /deep/ .el-button {
+      background: #e9f4ff;
+      height: 100%;
+   }
+   
+ 
+  .extra-charge-icon{
+      font-size: 12px;
+      color: #fff;
+      height: 20px;
+      width: 20px;
+      text-align: center;
+      line-height: 20px;
+      display: inline-block;
+      border-radius: 50%;
+      margin-right: 4px;
+      background-color: #f6a623;
+    }
+
+}
+.pay-panel{
+  text-align: right;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    display: -webkit-flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    min-height: 110px;
+    -ms-flex-line-pack: end;
+    align-content: flex-end;
+    font-size: 15px;
+    padding-right: 10px;
+    .inventory{
+      margin-bottom: 20px;
+      font-size: 14px;
+      line-height: 24px;
+      vertical-align: bottom;
+    }
+}
+ .extraTableClass{
+    height: 400px;
+    overflow: auto;
+  }
